@@ -20,7 +20,5 @@ public class Car {
     private String carName;
     private String federalLicensePlate;
     private String status;
-    @OneToOne
-    private Driver driver;
 
 }

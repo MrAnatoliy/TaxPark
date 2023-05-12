@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 import "./App.css";
-import { useLocalState } from "./util/useLocalStorage";
 import { Routes, Route } from "react-router-dom";
 import Mainpage from "./mainpage";
 import Login from "./login";
 import PrivateRoute from "./privateRoute";
+import CarView from "./carView";
 
 function App() {
   return (
@@ -17,6 +16,11 @@ function App() {
           </PrivateRoute>
         }
       />
+      <Route path="/car/:id" element={
+          <PrivateRoute>
+            <CarView />
+          </PrivateRoute>
+        }/>
       <Route path="/login" element={<Login />} />
     </Routes>
   );
