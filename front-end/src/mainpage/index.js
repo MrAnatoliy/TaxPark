@@ -3,7 +3,7 @@ import { useLocalState } from "../util/useLocalStorage";
 import { Link } from "react-router-dom";
 
 const Mainpage = () => {
-  const [jwt] = useLocalState("", "jwt");
+  const [jwt, setJwt] = useLocalState("", "jwt");
   const [car, setCars] = useState(null);
 
   useEffect(() => {
@@ -16,6 +16,10 @@ const Mainpage = () => {
     })
       .then((response) => {
         if (response.status === 200) return response.json();
+        if (response.status === 403) {
+          setJwt("");
+          window.location.href("login");
+        }
       })
       .then((carsData) => {
         setCars(carsData);
@@ -33,11 +37,13 @@ const Mainpage = () => {
       .then((response) => {
         if (response.status === 200)
           return Promise.all([response.json(), response.headers]);
-        else return Promise.reject("Bad data");
+        else if (response.status === 403) {
+          setJwt("");
+          window.location.href("login");
+        } else return Promise.reject("Bad data");
       })
       .then(([body, headers]) => {
-        console.log(body);
-        //window.location.href = `/car/${body.id}`;
+        window.location.href = `/car/${body.id}`;
       });
   }
 

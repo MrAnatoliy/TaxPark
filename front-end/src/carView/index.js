@@ -3,7 +3,7 @@ import { useLocalState } from "../util/useLocalStorage";
 
 const CarView = () => {
   const carID = window.location.href.split("/car/")[1];
-  const [jwt] = useLocalState("", "jwt");
+  const [jwt, setJwt] = useLocalState("", "jwt");
   const [car, setCar] = useState(null);
 
   useEffect(() => {
@@ -16,6 +16,10 @@ const CarView = () => {
     })
       .then((response) => {
         if (response.status === 200) return response.json();
+        if (response.status === 403){
+            setJwt("");
+            window.location.href("login");
+        }
       })
       .then((carsData) => {
         setCar(carsData);
