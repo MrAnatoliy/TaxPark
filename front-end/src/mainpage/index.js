@@ -20,7 +20,7 @@ const Mainpage = () => {
       .then((carsData) => {
         setCars(carsData);
       });
-  });
+  }, []);
 
   function createCar() {
     fetch("http://localhost:8080/api/v1/cars", {
@@ -36,7 +36,8 @@ const Mainpage = () => {
         else return Promise.reject("Bad data");
       })
       .then(([body, headers]) => {
-        window.location.href = `/car/${body.id}`;
+        console.log(body);
+        //window.location.href = `/car/${body.id}`;
       });
   }
 
@@ -49,8 +50,8 @@ const Mainpage = () => {
             <div>
               <Link to={`/car/${car.id}`}>Car ID : {car.id}</Link>
             </div>
-            <div>Car Name : {car.car_name}</div>
-            <div>Car Plate : {car.federal_license_plate}</div>
+            <div>Car Name : {car.carName}</div>
+            <div>Car Plate : {car.federalLicensePlate}</div>
             <div>Car Status : {car.status}</div>
             <br></br>
           </div>

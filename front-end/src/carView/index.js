@@ -20,7 +20,7 @@ const CarView = () => {
       .then((carsData) => {
         setCar(carsData);
       });
-  });
+  }, []);
 
   return (
     <div>
