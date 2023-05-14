@@ -33,6 +33,8 @@ const Login = () => {
         .catch((message) => {
           alert(message);
         });
+    } else {
+      window.location.href = "mainpage";
     }
   }
 

@@ -37,4 +37,9 @@ public class CarController {
         return ResponseEntity.ok(carOpt.orElse(new Car()));
     }
 
+    @GetMapping("search/{search}")
+    public ResponseEntity<?> searchCar(@PathVariable String search){
+        return ResponseEntity.ok(carService.getCarsByName(search));
+    }
+
 }

@@ -16,9 +16,9 @@ const CarView = () => {
     })
       .then((response) => {
         if (response.status === 200) return response.json();
-        if (response.status === 403){
-            setJwt("");
-            window.location.href("login");
+        if (response.status === 403) {
+          setJwt("");
+          window.location.href = "login";
         }
       })
       .then((carsData) => {

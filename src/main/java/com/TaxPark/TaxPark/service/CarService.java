@@ -31,4 +31,8 @@ public class CarService {
     public Optional<Car> findByID(Long carID) {
         return carRepository.findById(carID);
     }
+
+    public List<Car> getCarsByName(String name){
+        return carRepository.findByCarName(name);
+    }
 }

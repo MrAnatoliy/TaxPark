@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const Mainpage = () => {
   const [jwt, setJwt] = useLocalState("", "jwt");
   const [car, setCars] = useState(null);
+  const [carSearch, setCarSearch] = useState(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8080/api/v1/cars", {
@@ -18,7 +20,7 @@ const Mainpage = () => {
         if (response.status === 200) return response.json();
         if (response.status === 403) {
           setJwt("");
-          window.location.href("login");
+          window.location.href = "login";
         }
       })
       .then((carsData) => {
@@ -47,24 +49,54 @@ const Mainpage = () => {
       });
   }
 
+  function getCarList() {
+    console.log(carSearch);
+    var cars;
+    if (carSearch === undefined || carSearch === []) cars = car;
+    else cars = carSearch;
+    const carList = cars.map((car) => (
+      <li key={car.id}>
+        <div>
+          <Link to={`/car/${car.id}`}>Car ID : {car.id}</Link>
+        </div>
+        <div>Car Name : {car.carName}</div>
+        <div>Car Plate : {car.federalLicensePlate}</div>
+        <div>Car Status : {car.status}</div>
+        <br></br>
+      </li>
+    ));
+    return <ul>{carList}</ul>;
+  }
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/v1/cars/search/${search}`, {
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      },
+      method: "GET",
+    })
+      .then((response) => {
+        if (response.status === 200) return response.json();
+      })
+      .then((carsData) => {
+        setCarSearch(carsData);
+      });
+  }, [search]);
+
   return (
     <div>
-      <button onClick={() => createCar()}>Add new car</button>
-      {car ? (
-        car.map((car) => (
-          <div>
-            <div>
-              <Link to={`/car/${car.id}`}>Car ID : {car.id}</Link>
-            </div>
-            <div>Car Name : {car.carName}</div>
-            <div>Car Plate : {car.federalLicensePlate}</div>
-            <div>Car Status : {car.status}</div>
-            <br></br>
-          </div>
-        ))
-      ) : (
-        <></>
-      )}
+      <div>
+        <input
+          type="text"
+          id="carSearch"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+        <button onClick={() => createCar()}>Add new car</button>
+      </div>
+
+      {car ? getCarList() : <></>}
     </div>
   );
 };
