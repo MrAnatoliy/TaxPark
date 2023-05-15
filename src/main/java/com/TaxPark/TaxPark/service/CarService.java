@@ -14,11 +14,11 @@ public class CarService {
     @Autowired
     private CarRepository carRepository;
 
-    public Car save() {
+    public Car save(String carName, String licensePlate, String status) {
         Car car = new Car();
-        car.setCarName("preset_car_name");
-        car.setFederalLicensePlate("preset_federal_license_plate");
-        car.setStatus("preset_status");
+        car.setCarName(carName);
+        car.setFederalLicensePlate(licensePlate);
+        car.setStatus(status);
 
         return carRepository.save(car);
 

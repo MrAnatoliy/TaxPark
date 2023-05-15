@@ -4,6 +4,7 @@ import Mainpage from "./mainpage";
 import Login from "./login";
 import PrivateRoute from "./privateRoute";
 import CarView from "./carView";
+import CarCreate from "./carCreate";
 
 function App() {
   return (
@@ -16,11 +17,22 @@ function App() {
           </PrivateRoute>
         }
       />
-      <Route path="/car/:id" element={
+      <Route
+        path="/car/:id"
+        element={
           <PrivateRoute>
             <CarView />
           </PrivateRoute>
-        }/>
+        }
+      />
+      <Route
+        path="/createCar"
+        element={
+          <PrivateRoute>
+            <CarCreate />
+          </PrivateRoute>
+        }
+      />
       <Route path="/login" element={<Login />} />
     </Routes>
   );

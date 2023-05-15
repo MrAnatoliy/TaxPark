@@ -17,9 +17,14 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    @PostMapping("")
-    public ResponseEntity<?> createCar (@AuthenticationPrincipal User user){
-        Car newCar = carService.save();
+    @PostMapping("/{carName}/{licensePlate}/{status}")
+    public ResponseEntity<?> createCar (
+            @AuthenticationPrincipal User user,
+            @PathVariable("carName") String carName,
+            @PathVariable("licensePlate") String licensePlate,
+            @PathVariable("status") String status
+            ){
+        Car newCar = carService.save(carName, licensePlate, status);
 
         System.out.println(newCar);
 

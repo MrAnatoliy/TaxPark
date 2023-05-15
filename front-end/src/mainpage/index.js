@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocalState } from "../util/useLocalStorage";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 
 const Mainpage = () => {
   const [jwt, setJwt] = useLocalState("", "jwt");
@@ -27,27 +27,6 @@ const Mainpage = () => {
         setCars(carsData);
       });
   }, []);
-
-  function createCar() {
-    fetch("http://localhost:8080/api/v1/cars", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${jwt}`,
-      },
-      method: "POST",
-    })
-      .then((response) => {
-        if (response.status === 200)
-          return Promise.all([response.json(), response.headers]);
-        else if (response.status === 403) {
-          setJwt("");
-          window.location.href("login");
-        } else return Promise.reject("Bad data");
-      })
-      .then(([body, headers]) => {
-        window.location.href = `/car/${body.id}`;
-      });
-  }
 
   function getCarList() {
     var cars;
@@ -107,7 +86,9 @@ const Mainpage = () => {
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
-        <button onClick={() => createCar()}>Add new car</button>
+        <button onClick={() => (window.location.href = "/createCar")}>
+          Add new car
+        </button>
       </div>
 
       {car ? getCarList() : <></>}

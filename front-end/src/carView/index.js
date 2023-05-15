@@ -31,6 +31,9 @@ const CarView = () => {
       <h1>Car {carID}</h1>
       {car ? (
         <>
+          <h2>Car name: {car.carName}</h2>
+          <h2>Car license Plate: {car.federalLicensePlate}</h2>
+          <h2>Car Name: {car.status}</h2>
           <h2>Status: {car.status}</h2>
         </>
       ) : (
