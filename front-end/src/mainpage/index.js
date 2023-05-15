@@ -50,17 +50,22 @@ const Mainpage = () => {
   }
 
   function getCarList() {
-    var cars = car;
-    if (typeof carSearch !== "undefined" && carSearch !== null) {
-      if (
-        Object.keys(carSearch).length !== 0 &&
-        Object.getPrototypeOf(carSearch) !== Object.prototype
-      ) {
-        cars = carSearch;
-        console.log(typeof carSearch);
-        console.log(carSearch);
+    var cars;
+    if (search === "") {
+      cars = car;
+    } else {
+      if (typeof carSearch !== "undefined" && carSearch !== null) {
+        if (
+          Object.keys(carSearch).length !== 0 &&
+          Object.getPrototypeOf(carSearch) !== Object.prototype
+        ) {
+          cars = carSearch;
+          console.log(typeof carSearch);
+          console.log(carSearch);
+        } else return <p>Nothing has been found</p>;
       }
     }
+
     const carList = cars.map((car) => (
       <li key={car.id}>
         <div>
