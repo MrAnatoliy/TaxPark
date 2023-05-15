@@ -50,10 +50,17 @@ const Mainpage = () => {
   }
 
   function getCarList() {
-    console.log(carSearch);
-    var cars;
-    if (carSearch === undefined || carSearch === []) cars = car;
-    else cars = carSearch;
+    var cars = car;
+    if (typeof carSearch !== "undefined" && carSearch !== null) {
+      if (
+        Object.keys(carSearch).length !== 0 &&
+        Object.getPrototypeOf(carSearch) !== Object.prototype
+      ) {
+        cars = carSearch;
+        console.log(typeof carSearch);
+        console.log(carSearch);
+      }
+    }
     const carList = cars.map((car) => (
       <li key={car.id}>
         <div>
@@ -69,6 +76,7 @@ const Mainpage = () => {
   }
 
   useEffect(() => {
+    if (search === "") return;
     fetch(`http://localhost:8080/api/v1/cars/search/${search}`, {
       headers: {
         "Content-type": "application/json",
