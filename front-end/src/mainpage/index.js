@@ -17,8 +17,11 @@ const Mainpage = () => {
       method: "GET",
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) return response.json();
+        if (response.status === 403) {
+          setJwt("");
+          window.location.href = "login";
+        }
       })
       .then((carsData) => {
         setCars(carsData);
@@ -57,9 +60,11 @@ const Mainpage = () => {
           Object.getPrototypeOf(carSearch) !== Object.prototype
         ) {
           cars = carSearch;
-          console.log(typeof carSearch);
-          console.log(carSearch);
-        } else return <p>Nothing has been found</p>;
+        } else {
+          return <p>Nothing has been found</p>;
+        }
+      } else {
+        return <p>Nothing has been found</p>;
       }
     }
     const carList = cars.map((car) => (
@@ -86,13 +91,12 @@ const Mainpage = () => {
       method: "GET",
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) return response.json();
       })
       .then((carsData) => {
         setCarSearch(carsData);
       });
-  }, [search, jwt]);
+  }, [search]);
 
   return (
     <div>
@@ -106,7 +110,7 @@ const Mainpage = () => {
         <button onClick={() => createCar()}>Add new car</button>
       </div>
 
-      {car !== [] ? getCarList() : <>Nothing was found</>}
+      {car ? getCarList() : <></>}
     </div>
   );
 };
