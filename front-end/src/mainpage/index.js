@@ -17,11 +17,8 @@ const Mainpage = () => {
       method: "GET",
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) return response.json();
-        if (response.status === 403) {
-          setJwt("");
-          window.location.href = "login";
-        }
       })
       .then((carsData) => {
         setCars(carsData);
@@ -50,8 +47,8 @@ const Mainpage = () => {
   }
 
   function getCarList() {
-    console.log(carSearch);
     var cars;
+    if (car === null || carSearch === null) return null;
     if (carSearch === undefined || carSearch === []) cars = car;
     else cars = carSearch;
     const carList = cars.map((car) => (
@@ -77,12 +74,13 @@ const Mainpage = () => {
       method: "GET",
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) return response.json();
       })
       .then((carsData) => {
         setCarSearch(carsData);
       });
-  }, [search]);
+  }, [search, jwt]);
 
   return (
     <div>
@@ -96,7 +94,7 @@ const Mainpage = () => {
         <button onClick={() => createCar()}>Add new car</button>
       </div>
 
-      {car ? getCarList() : <></>}
+      {car !== [] ? getCarList() : <>Nothing was found</>}
     </div>
   );
 };
