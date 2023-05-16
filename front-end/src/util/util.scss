@@ -1,0 +1,31 @@
+$accent_color: #8758ff;
+$interactive_color: #5cb8e4;
+$interactive_color_shadow: #4A98BD;
+$elemnt_color: #f2f2f2;
+$elemnt_color_shadow: rgba(0, 0, 0, 0.25);
+$background_color: #fff;
+
+@mixin basic_flex() {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: $background_color;
+}
+
+@mixin basic_element($height, $width, $border_radius, $shadow_padding) {
+  display: flex;
+  height: $height;
+  width: $width;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  background: $elemnt_color;
+  @include element_shadow($shadow_padding);
+  border-radius: $border_radius;
+}
+
+@mixin element_shadow($shadow_padding){
+  box-shadow: 0px $shadow_padding 3px $elemnt_color_shadow;
+}

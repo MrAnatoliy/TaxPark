@@ -1,0 +1,10 @@
+@import "./login.scss";
+@import "./mainpage.scss";
+
+#login{
+    @include login();
+}
+
+#mainpage{
+    @include mainpage();
+}

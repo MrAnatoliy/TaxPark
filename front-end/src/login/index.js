@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useLocalState } from "../util/useLocalStorage";
 
+import "../style/style.scss";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,31 +41,36 @@ const Login = () => {
   }
 
   return (
-    <>
-      <div>
-        <label htmlFor="username">Email</label>
-        <input
-          type="email"
-          id="username"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
+    <div id="login">
+    <div id="body">
+      <h1>Login</h1>
+      <div id="login_form">
+        <div class="input_row">
+          <h3>Email</h3>
+          <input
+            type="email"
+            id="username"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <div class="input_row">
+          <h3>Password</h3>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <div>
+          <button id="submit" type="button" onClick={() => sendLoginRequest()}>
+            Login
+          </button>
+        </div>
       </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-      </div>
-      <div>
-        <button id="submit" type="button" onClick={() => sendLoginRequest()}>
-          Login
-        </button>
-      </div>
-    </>
+    </div>
+    </div>
   );
 };
 

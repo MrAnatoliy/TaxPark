@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useLocalState } from "../util/useLocalStorage";
 import { Link, Route } from "react-router-dom";
 
+import "../style/style.scss";
+
 const Mainpage = () => {
   const [jwt, setJwt] = useLocalState("", "jwt");
   const [car, setCars] = useState(null);
@@ -40,22 +42,24 @@ const Mainpage = () => {
         ) {
           cars = carSearch;
         } else {
-          return <p>Nothing has been found</p>;
+          return <h1>Nothing has been found</h1>;
         }
       } else {
-        return <p>Nothing has been found</p>;
+        return <h1>Nothing has been found</h1>;
       }
     }
     const carList = cars.map((car) => (
-      <li key={car.id}>
+      <div key={car.id} id="carGridElement">
         <div>
           <Link to={`/car/${car.id}`}>Car ID : {car.id}</Link>
         </div>
         <div>Car Name : {car.carName}</div>
         <div>Car Plate : {car.federalLicensePlate}</div>
-        <div>Car Status : {car.status}</div>
-        <br></br>
-      </li>
+        <div id="status">
+          <div id="status_indicator"></div>
+          <div>{car.status}</div>
+        </div>
+      </div>
     ));
     return <ul>{carList}</ul>;
   }
@@ -78,20 +82,27 @@ const Mainpage = () => {
   }, [search]);
 
   return (
-    <div>
-      <div>
-        <input
-          type="text"
-          id="carSearch"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-        />
-        <button onClick={() => (window.location.href = "/createCar")}>
-          Add new car
-        </button>
+    <div id="mainpage">
+      <div id="header">
+        <h1>TaxPark</h1>
       </div>
-
-      {car ? getCarList() : <></>}
+      <div id="body">
+        <div id="controll_panel">
+          <input
+            type="text"
+            id="carSearch"
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+          />
+          <button
+            id="addButton"
+            onClick={() => (window.location.href = "/createCar")}
+          >
+            Add new car
+          </button>
+        </div>
+        <div id="carGrid">{car ? getCarList() : <></>}</div>
+      </div>
     </div>
   );
 };

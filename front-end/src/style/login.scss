@@ -1,0 +1,55 @@
+@import "src/util/util";
+
+@mixin login{
+    #body {
+        @include basic_flex();
+        h1 {
+          color: $accent_color;
+        }
+      }
+      
+      #login_form {
+        @include basic_element(30vh, 30vw, 15px, 3px);
+        min-width: 400px;
+        min-height: 250px;
+        padding-bottom: 10px;
+      
+        .input_row {
+          position: relative;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-direction: row;
+          width: 100%;
+          input {
+            margin-left: 2.5%;
+            margin-right: 5%;
+            width: 70%;
+            height: 60%;
+            border-style: none;
+            background-color: $accent_color;
+            color: $elemnt_color;
+            font-size: 20px;
+            border-radius: 5px;
+            &:focus {
+              outline: none;
+            }
+          }
+        }
+      
+        button {
+          position: relative;
+          border-style: none;
+          background-color: $interactive_color;
+          border-radius: 5px;
+          padding: 10px 50px;
+          font-size: 25px;
+          color: $elemnt_color;
+          transition: 0.5s;
+          &:hover {
+            background-color: $accent_color;
+          }
+        }
+      }
+      
+}

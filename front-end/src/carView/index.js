@@ -27,7 +27,7 @@ const CarView = () => {
   }, []);
 
   return (
-    <div>
+    <div id="body">
       <h1>Car {carID}</h1>
       {car ? (
         <>

@@ -1,0 +1,106 @@
+@import "src/util/util";
+
+@mixin mainpage {
+  #header {
+    display: flex;
+    flex-direction: row;
+    background-color: $accent_color;
+    color: $elemnt_color;
+    padding-left: 25px;
+  }
+
+  #controll_panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+  }
+
+  #carSearch {
+    border-style: none;
+    &:focus {
+      outline: none;
+    }
+    border-radius: 10px;
+    background-color: $elemnt_color;
+    @include element_shadow(3px);
+    width: 30%;
+    height: 1.5em;
+    font-size: 30px;
+    padding-left: 20px;
+  }
+
+  #addButton {
+    border-style: none;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 13px 20px;
+    margin-left: 20px;
+    background-color: $interactive_color;
+    color: $elemnt_color;
+    box-shadow: 0px 3px 0px $interactive_color_shadow;
+    transition: 0.25s;
+    &:hover {
+      box-shadow: 0px 0px 0px $interactive_color_shadow;
+      transform: translate(0px, 3px);
+    }
+
+    &:focus {
+      background-color: $accent_color;
+    }
+  }
+
+  #carGridElement {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+    padding: 20px 50px;
+    font-size: 20px;
+
+    #status {
+      height: 100%;
+      grid-column: 2/3;
+      grid-row: 1/4;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      #status_indicator {
+        width: 70px;
+        height: 70px;
+        border-radius: 100px;
+        background-color: greenyellow;
+      }
+    }
+
+    background-color: $elemnt_color;
+    border-radius: 10px;
+    @include element_shadow(3px);
+    animation: ani 0.5s both alternate;
+  }
+
+  @keyframes ani {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #carGrid {
+    ul {
+      display: grid;
+      padding-inline: 20px 50px;
+      padding: 0px 50px;
+      margin: 0px;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-row-gap: 1em;
+      grid-column-gap: 1em;
+    }
+  }
+}
