@@ -48,20 +48,39 @@ const Mainpage = () => {
         return <h1>Nothing has been found</h1>;
       }
     }
+
     const carList = cars.map((car) => (
       <div key={car.id} id="carGridElement">
         <div>
-          <Link to={`/car/${car.id}`}>Car ID : {car.id}</Link>
+          <Link id="carID" to={`/car/${car.id}`}>
+            Car ID : {car.id}
+          </Link>
         </div>
         <div>Car Name : {car.carName}</div>
         <div>Car Plate : {car.federalLicensePlate}</div>
         <div id="status">
-          <div id="status_indicator"></div>
+          <div
+            id="status_indicator"
+            style={{ backgroundColor: getStatusColor(car.status) }}
+          ></div>
           <div>{car.status}</div>
         </div>
       </div>
     ));
     return <ul>{carList}</ul>;
+  }
+
+  function getStatusColor(status) {
+    switch (status) {
+      case "inUse":
+        return "#68E55D";
+      case "inGarage":
+        return "#E92020";
+      case "inRepair":
+        return "#DEED38";
+      default:
+        return "white";
+    }
   }
 
   useEffect(() => {

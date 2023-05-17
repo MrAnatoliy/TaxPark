@@ -59,6 +59,17 @@
     padding: 20px 50px;
     font-size: 20px;
 
+    #carID{
+      font-size: 25px;
+      color: $interactive_color;
+      text-decoration: none;
+      transition: 0.25s;
+
+      &:hover{
+        color: $accent_color;
+      }
+    }
+
     #status {
       height: 100%;
       grid-column: 2/3;

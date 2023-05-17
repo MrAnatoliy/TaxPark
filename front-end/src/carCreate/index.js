@@ -30,44 +30,49 @@ const CarCreate = () => {
   }
 
   return (
-    <>
-      <div>
-        <label htmlFor="carName">Car Name</label>
-        <input
-          type="text"
-          id="carName"
-          value={carName}
-          onChange={(event) => setCarName(event.target.value)}
-        />
+    <div id="carCreate">
+      <div id="body">
+        <h1>Create Car</h1>
+        <div id="createForm">
+          <div class="input_row">
+            <h3>Car name</h3>
+            <input
+              type="text"
+              id="carName"
+              value={carName}
+              onChange={(event) => setCarName(event.target.value)}
+            />
+          </div>
+          <div class="input_row">
+            <h3>License plate</h3>
+            <input
+              type="text"
+              id="licensePlate"
+              value={carLicensePlate}
+              onChange={(event) => setCarLicensePlate(event.target.value)}
+            />
+          </div>
+          <div id="selectInput">
+            <select
+              name="statusSelect"
+              id="status"
+              value={status}
+              onChange={(event) => setStatus(event.target.value)}
+            >
+              <option class="option" value="">---select---</option>
+              <option class="option" value="inUse">In Use</option>
+              <option class="option" value="inGarage">In Garage</option>
+              <option class="option" value="inRepair">In repair</option>
+            </select>
+          </div>
+          <div>
+            <button id="submit" type="button" onClick={() => createCar()}>
+              Create new car
+            </button>
+          </div>
+        </div>
       </div>
-      <div>
-        <label htmlFor="licensePlate">license Plate</label>
-        <input
-          type="text"
-          id="licensePlate"
-          value={carLicensePlate}
-          onChange={(event) => setCarLicensePlate(event.target.value)}
-        />
-      </div>
-      <div>
-        <select
-          name="statusSelect"
-          id="status"
-          value={status}
-          onChange={(event) => setStatus(event.target.value)}
-        >
-          <option value="">---select---</option>
-          <option value="inUse">In Use</option>
-          <option value="inGarage">In Garage</option>
-          <option value="inRepair">In repair</option>
-        </select>
-      </div>
-      <div>
-        <button id="submit" type="button" onClick={() => createCar()}>
-          Create new car
-        </button>
-      </div>
-    </>
+    </div>
   );
 };
 

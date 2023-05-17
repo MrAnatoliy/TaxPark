@@ -1,0 +1,76 @@
+@import "src/util/util";
+
+@mixin carCreate() {
+  width: 100vw;
+  height: 100vh;
+
+  #body {
+    @include basic_flex();
+    h1 {
+      color: $accent_color;
+    }
+  }
+
+  #createForm {
+    @include basic_element(40%, 30%, 20px, 3px);
+
+    .input_row {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: row;
+      width: 100%;
+      input {
+        margin-left: 2.5%;
+        margin-right: 5%;
+        width: 70%;
+        height: 60%;
+        border-style: none;
+        background-color: $accent_color;
+        color: $elemnt_color;
+        font-size: 20px;
+        border-radius: 5px;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    #selectInput {
+      #status {
+        position: relative;
+        border-style: none;
+        outline: none;
+        background-color: $interactive_color;
+        border-radius: 5px;
+        padding: 5px 25px;
+
+        font-size: 25px;
+        color: $elemnt_color;
+        transition: 0.5s;
+        &:hover {
+          background-color: $accent_color;
+        }
+      }
+    }
+
+    button {
+      position: relative;
+      border-style: none;
+      background-color: $interactive_color;
+      border-radius: 5px;
+      padding: 10px 50px;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-size: 25px;
+      color: $elemnt_color;
+      transition: 0.5s;
+      &:hover {
+        background-color: $accent_color;
+      }
+    }
+  }
+}

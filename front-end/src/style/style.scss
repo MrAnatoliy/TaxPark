@@ -1,10 +1,20 @@
 @import "./login.scss";
 @import "./mainpage.scss";
+@import "./carCreate.scss";
+@import "./carView.scss";
 
-#login{
-    @include login();
+#login {
+  @include login();
 }
 
-#mainpage{
-    @include mainpage();
+#mainpage {
+  @include mainpage();
+}
+
+#carCreate {
+  @include carCreate();
+}
+
+#carView {
+  @include carView();
 }
