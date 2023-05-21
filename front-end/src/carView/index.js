@@ -47,10 +47,6 @@ const CarView = () => {
                 <h2>{car.federalLicensePlate}</h2>
               </div>
               <div class="dataRow">
-                <h2 class="dataName">Car Name: </h2>
-                <h2>{car.status}</h2>
-              </div>
-              <div class="dataRow">
                 <h2 class="dataName">Status: </h2>
                 <h2>{car.status}</h2>
               </div>
