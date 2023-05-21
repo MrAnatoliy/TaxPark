@@ -35,6 +35,11 @@ const CarCreate = () => {
 
   return (
     <div id="carCreate">
+      <div id="header">
+        <a href="mainpage">
+          <h1>TaxPark</h1>
+        </a>
+      </div>
       <div id="body">
         <h1>Create Car</h1>
         <div id="createForm">

@@ -28,6 +28,11 @@ const CarView = () => {
 
   return (
     <div id="carView">
+      <div id="header">
+        <a href="mainpage">
+          <h1>TaxPark</h1>
+        </a>
+      </div>
       <div id="body">
         <h1>Car {carID}</h1>
         <div id="carDisplay">

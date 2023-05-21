@@ -103,7 +103,9 @@ const Mainpage = () => {
   return (
     <div id="mainpage">
       <div id="header">
-        <h1>TaxPark</h1>
+        <a href="mainpage">
+          <h1>TaxPark</h1>
+        </a>
       </div>
       <div id="body">
         <div id="controll_panel">

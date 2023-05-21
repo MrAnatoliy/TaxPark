@@ -4,6 +4,22 @@
   width: 100vw;
   height: 100vh;
 
+  #header {
+    display: flex;
+    flex-direction: row;
+    background-color: $accent_color;
+    color: $elemnt_color;
+    padding-left: 25px;
+
+    a {
+      text-decoration: none;
+    }
+
+    h1 {
+      color: $background_color;
+    }
+  }
+
   #body {
     @include basic_flex();
     h1 {

@@ -1,14 +1,30 @@
 @import "src/util/util";
 
 @mixin carView() {
-  #body {
-    @include basic_flex();
-    h1{
-        color: $accent_color;
+  #header {
+    display: flex;
+    flex-direction: row;
+    background-color: $accent_color;
+    color: $elemnt_color;
+    padding-left: 25px;
+
+    a {
+      text-decoration: none;
+    }
+
+    h1 {
+      color: $background_color;
     }
   }
 
-  #carDisplay{
+  #body {
+    @include basic_flex();
+    h1 {
+      color: $accent_color;
+    }
+  }
+
+  #carDisplay {
     @include basic_element(30%, 25%, 20px, 3px);
     min-width: 600px;
     min-height: 350px;
@@ -17,14 +33,14 @@
     padding-left: 5%;
     padding-right: 5%;
 
-    .dataRow{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-        .dataName{
-            color: $accent_color;
-        }
+    .dataRow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      .dataName {
+        color: $accent_color;
+      }
     }
   }
 }
