@@ -10,6 +10,8 @@
 
   #carDisplay{
     @include basic_element(30%, 25%, 20px, 3px);
+    min-width: 600px;
+    min-height: 350px;
 
     align-items: flex-start;
     padding-left: 5%;

@@ -20,13 +20,17 @@ const CarCreate = () => {
         },
         method: "POST",
       }
-    ).then((response) => {
-      if (response.status === 200) return response.json();
-      if (response.status === 403) {
-        setJwt("");
-        window.location.href = "login";
-      }
-    });
+    )
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        if (response.status === 403) {
+          setJwt("");
+          window.location.href = "login";
+        }
+      })
+      .then(() => {
+        window.location.href = "mainpage";
+      });
   }
 
   return (
@@ -52,18 +56,29 @@ const CarCreate = () => {
               onChange={(event) => setCarLicensePlate(event.target.value)}
             />
           </div>
-          <div id="selectInput">
-            <select
-              name="statusSelect"
-              id="status"
-              value={status}
-              onChange={(event) => setStatus(event.target.value)}
-            >
-              <option class="option" value="">---select---</option>
-              <option class="option" value="inUse">In Use</option>
-              <option class="option" value="inGarage">In Garage</option>
-              <option class="option" value="inRepair">In repair</option>
-            </select>
+          <div class="input_row">
+            <h3 id="select_info">Car status</h3>
+            <div id="selectInput">
+              <select
+                name="statusSelect"
+                id="status"
+                value={status}
+                onChange={(event) => setStatus(event.target.value)}
+              >
+                <option class="option" value="">
+                  ---select---
+                </option>
+                <option class="option" value="inUse">
+                  In Use
+                </option>
+                <option class="option" value="inGarage">
+                  In Garage
+                </option>
+                <option class="option" value="inRepair">
+                  In repair
+                </option>
+              </select>
+            </div>
           </div>
           <div>
             <button id="submit" type="button" onClick={() => createCar()}>

@@ -114,4 +114,24 @@
       grid-column-gap: 1em;
     }
   }
+
+  @media screen and (max-width: 1240px) {
+    #carGrid{
+      ul{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    #carSearch{
+      width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 820px) {
+    #carGrid{
+      ul{
+        grid-template-columns: 1fr;
+      }
+    }
+  }
 }
