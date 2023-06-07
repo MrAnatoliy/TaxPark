@@ -1,4 +1,4 @@
-package com.TaxPark.TaxPark.config;
+package com.StudentOnline.StudentOnline.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

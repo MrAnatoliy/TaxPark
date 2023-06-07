@@ -1,4 +1,4 @@
-package com.TaxPark.TaxPark.config;
+package com.StudentOnline.StudentOnline.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.TaxPark.TaxPark.auth;
+package com.StudentOnline.StudentOnline.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
