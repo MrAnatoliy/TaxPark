@@ -1,4 +1,4 @@
-package com.StudentOnline.StudentOnline.auth;
+package com.TaxPark.TaxPark.auth;
 
 import com.TaxPark.TaxPark.config.JwtService;
 import com.TaxPark.TaxPark.domain.Role;

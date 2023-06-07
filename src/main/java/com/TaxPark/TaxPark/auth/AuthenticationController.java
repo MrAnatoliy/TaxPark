@@ -1,4 +1,4 @@
-package com.StudentOnline.StudentOnline.auth;
+package com.TaxPark.TaxPark.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

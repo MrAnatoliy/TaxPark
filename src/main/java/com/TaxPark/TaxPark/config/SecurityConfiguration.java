@@ -1,4 +1,4 @@
-package com.StudentOnline.StudentOnline.config;
+package com.TaxPark.TaxPark.config;
 
 import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;

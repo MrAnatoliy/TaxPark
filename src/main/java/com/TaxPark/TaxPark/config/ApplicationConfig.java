@@ -1,4 +1,4 @@
-package com.StudentOnline.StudentOnline.config;
+package com.TaxPark.TaxPark.config;
 
 import com.TaxPark.TaxPark.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
