@@ -39,9 +39,6 @@ const CarCreate = () => {
         <a href="mainpage">
           <h1>TaxPark</h1>
         </a>
-        <a href="login" onClick={() => setJwt("") }>
-          <h1>Log out</h1>
-        </a>
       </div>
       <div id="body">
         <h1>Create Car</h1>
